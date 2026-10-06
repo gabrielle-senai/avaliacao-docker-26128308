@@ -1,12 +1,11 @@
 # Respostas · Avaliação Prática de Docker · Cooperativa AgroVale (Turma A)
 
-Nome: 
-Matrícula:
-Usuário do GitHub:
-Usuário do Docker Hub:
+Nome: Gabrielle Aparecida Cascardi Giroldo
+Matrícula: 26128308
+Usuário do GitHub: gabrielle-senai
+Usuário do Docker Hub: gabriellecascardi
 
-Responda com as suas palavras e com o que aconteceu na SUA máquina. Resposta curta e certa vale mais
-do que texto longo copiado. Resposta que contradiz o seu próprio Dockerfile ou compose vale zero.
+Responda com as suas palavras e com o que aconteceu na SUA máquina. Resposta curta e certa vale mais do que texto longo copiado. Resposta que contradiz o seu próprio Dockerfile ou compose vale zero.
 
 ## Parte 1 · Dockerfile do portal
 
@@ -28,20 +27,23 @@ do que texto longo copiado. Resposta que contradiz o seu próprio Dockerfile ou 
 
 5. Preencha uma linha por defeito encontrado. Defeito inexistente listado aqui desconta pontos.
 
-| # | Instrução | O que estava errado | O que você viu acontecer | Como corrigiu |
-|---|---|---|---|---|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
+   | # | Instrução | O que estava errado | O que você viu acontecer | Como corrigiu |
+   |---|---|---|---|---|
+   | 1 | O dockerfile não tem instrução para levar para a página esperada, então ao abrir no navegador apareceu a mensagem "welcome to nginx". Então adicionei "COPY site/ .";
+   | 2 | Mesmo adicionando o COPY, devido ao apontamento do WORKDIR a página caiu no lugar errado novamente e continuou mostrando a mensagem "welcome to nginx". Alterei a linha para "WORKDIR /usr/share/nginx/html";
+   | 3 | Não consegui identificar um terceiro erro.
 
 6. Qual a diferença entre `-p 7042:80` e `-p 80:7042` no `docker run`? Qual dos dois números é a porta do container?
+   "-p 7042:80" determina porta do host como 7042 e do container 80, já "-p 80:7042" determina a porta do host como 80 e do container 7042. O número antes do ":" é a porta do host(meu PC) e o número depois do ":" é a porta do container.
 
 ## Parte 4 · docker-compose.yml
 
 7. No serviço `blog`, por que `WORDPRESS_DB_HOST` recebe `db` e não `localhost`?
+   Porque dentro do container do blog, "localhost" é o próprio WordPress, e não o banco. Na rede do Compose, o nome do serviço "db" funciona como endereço do banco.
 
-8. Por que o serviço `db` não publica a porta 3306? Se precisar consultar o banco, como faz sem publicar
-   a porta? Mostre o comando.
+8. Por que o serviço `db` não publica a porta 3306? Se precisar consultar o banco, como faz sem publicar a porta? Mostre o comando.
+   Porque só o blog precisa acessar o banco, e isso já funciona pela rede interna do Compose. Publicar a 3306 deixaria o banco exposto fora do container, sem necessidade.
+   Para consultar sem publicar a porta, entro no container do banco utilizando "docker compose exec db mariadb -u root -p" e depois digito a senha do `MARIADB_ROOT_PASSWORD` do `.env`.
 
 ## Parte 5 · Persistência
 
