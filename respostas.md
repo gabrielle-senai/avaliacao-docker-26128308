@@ -47,11 +47,11 @@ Responda com as suas palavras e com o que aconteceu na SUA máquina. Resposta cu
 
 ## Parte 5 · Persistência
 
-9. Quais comandos você usou para derrubar e subir a stack? Qual comando teria apagado o post que você criou,
-   e por quê?
+9. Quais comandos você usou para derrubar e subir a stack? Qual comando teria apagado o post que você criou, e por quê?
+   Para derrubar usei `docker compose down` e para subir usei `docker compose up -d`. O comando que teria apagado o post é `docker compose down -v`, porque o `-v` remove também os volumes nomeados. O post fica no banco, dentro do volume `db_dados`, e sem esse volume os dados se perdem.
 
 10. Código de conclusão impresso pelo verificador:
 
-```
-(cole aqui)
-```
+   ```
+   AGROVALE-26128308-E251F2B4
+   ```
