@@ -53,5 +53,5 @@ Responda com as suas palavras e com o que aconteceu na SUA máquina. Resposta cu
 10. Código de conclusão impresso pelo verificador:
 
    ```
-   AGROVALE-26128308-E251F2B4
+      AGROVALE-26128308-E251F2B4
    ```
